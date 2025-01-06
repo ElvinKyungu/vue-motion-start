@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { initialTabs as tabs } from './gradient'
-// import { AnimatePresence, Motion } from 'motion-v'
+import { AnimatePresence, Motion } from 'motion-v'
 
 const selectedTab = ref(tabs[0])
 </script>
 
 <template>
-  <div class="flex justify-center items-center">
-    <div class="w-[480px] h-[360px] max-w-[320px] rounded-[10px] bg-background overflow-hidden shadow-[0_1px_1px_rgba(0,0,0,0.075),0_2px_2px_rgba(0,0,0,0.075),0_4px_4px_rgba(0,0,0,0.075),0_8px_8px_rgba(0,0,0,0.075),0_16px_16px_rgba(0,0,0,0.075)] flex flex-col">
-      <nav class="bg-muted p-[5px_5px_0] rounded-[10px] rounded-b-none border-b border-[#eee] h-11">
+  <div class="flex flex-col justify-center items-center w-full min-h-screen bg-black ">
+    <div class="h-screen w-full"></div>
+    <div class="w-[480px] h-[360px] max-w-[320px] rounded-[10px] bg-gray-800 overflow-hidden shadow-[0_1px_1px_rgba(0,0,0,0.075),0_2px_2px_rgba(0,0,0,0.075),0_4px_4px_rgba(0,0,0,0.075),0_8px_8px_rgba(0,0,0,0.075),0_16px_16px_rgba(0,0,0,0.075)] flex flex-col">
+      <nav class="bg-muted p-[5px_5px_0] rounded-[10px] h-11">
         <ul class="flex w-full">
           <li
             v-for="item in tabs"
             :key="item.label"
             :class="{ 'bg-primary': item === selectedTab }"
-            class="rounded-[5px] rounded-b-none w-full p-[10px_15px] relative  cursor-pointer h-6 flex justify-between items-center flex-1 min-w-0 relative select-none font-['Poppins'] font-medium text-sm"
+            class="rounded-[5px] rounded-b-none  text-white w-full p-[10px_15px]   cursor-pointer h-6 flex justify-between items-center flex-1 min-w-0 relative select-none  font-medium text-sm"
             @click="selectedTab = item"
           >
             {{ item.icon }} {{ item.label }}
@@ -39,6 +40,38 @@ const selectedTab = ref(tabs[0])
           </Motion>
         </AnimatePresence>
       </main>
+    </div>
+    <div class="flex justify-center gap-4">
+      <Motion
+        as="div"
+        :animate="{ 
+          scale:[1,1.2,2, 1],
+          rotate: [0, 90, 180, 360],
+          borderRadius: ['0%', '50%', '50%', '50%'],
+        }"
+        :transition="{
+          duration: 2,
+          ease: 'easeInOut',
+          times: [0, 0.2, 0.5, 0.8, 1],
+          repeat: Infinity,
+          repeatDelay: 1,
+        }"
+        class="w-20 h-20  bg-white my-20 shadow-[0_1px_1px_rgba(0,0,0,0.075),0_2px_2px_rgba(0,0,0,0.075),0_4px_4px_rgba(0,0,0,0.075),0_8px_8px_rgba(0,0,0,0.075),0_16px_16px_rgba(0,0,0,0.075)]"
+      />
+      <Motion
+        as="div"
+        :initial="{ y: 50, opacity: .5, scale: 0 }"
+        :animate="{ y: 0, opacity: 1, rotate: 360, scale: 1 }"
+        :transition="{
+          type: 'spring',
+          stiffness: 260,
+          damping: 20,
+          delay: 0.3,
+        }"
+        layout
+        layout-id="underline"
+        class="w-20 h-20  bg-white my-20 rounded-full shadow-[0_1px_1px_rgba(0,0,0,0.075),0_2px_2px_rgba(0,0,0,0.075),0_4px_4px_rgba(0,0,0,0.075),0_8px_8px_rgba(0,0,0,0.075),0_16px_16px_rgba(0,0,0,0.075)]"
+      />
     </div>
   </div>
 </template>
