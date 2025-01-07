@@ -58,20 +58,6 @@ const selectedTab = ref(tabs[0])
         }"
         class="w-20 h-20  bg-white my-20 shadow-[0_1px_1px_rgba(0,0,0,0.075),0_2px_2px_rgba(0,0,0,0.075),0_4px_4px_rgba(0,0,0,0.075),0_8px_8px_rgba(0,0,0,0.075),0_16px_16px_rgba(0,0,0,0.075)]"
       />
-      <Motion
-        as="div"
-        :initial="{ y: 50, opacity: .5, scale: 0 }"
-        :animate="{ y: 0, opacity: 1, rotate: 360, scale: 1 }"
-        :transition="{
-          type: 'spring',
-          stiffness: 260,
-          damping: 20,
-          delay: 0.3,
-        }"
-        layout
-        layout-id="underline"
-        class="w-20 h-20  bg-white my-20 rounded-full shadow-[0_1px_1px_rgba(0,0,0,0.075),0_2px_2px_rgba(0,0,0,0.075),0_4px_4px_rgba(0,0,0,0.075),0_8px_8px_rgba(0,0,0,0.075),0_16px_16px_rgba(0,0,0,0.075)]"
-      />
     </div>
   </div>
 </template>
